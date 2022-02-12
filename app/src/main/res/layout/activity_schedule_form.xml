@@ -1,58 +1,643 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<TableLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".ScheduleFormActivity"
-        android:layout_width="fill_parent"
+        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/scheduleForm"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        tools:context=".ScheduleFormActivity"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:background="#FFFFFF"
 >
 
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:scrollbars="none"
-    >
-        <HorizontalScrollView
-                android:id="@+id/scroll_view"
+    <TableRow>
+        <EditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbarAlwaysDrawHorizontalTrack="false"
-                android:scrollbars="none">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="～"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
 
-            <LinearLayout
-                    android:id="@+id/MyTable"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="9dp"
-                    android:orientation="vertical"
-            >
-            <Button
-                    android:id="@+id/add"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="left"
-                    android:onClick="onclickAdd"
-                    android:text="+"
-            />
-            <Button
-                    android:id="@+id/reduce"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="left"
-                    android:onClick="onclickReduce"
-                    android:text="-"
-            />
-            <Button
-                    android:id="@+id/submit"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="left"
-                    android:onClick="onclickSubmit"
-                    android:text="提交"
-            />
-            </LinearLayout>
-        </HorizontalScrollView>
-    </ScrollView>
-</LinearLayout>
+        <com.smart.colorview.normal.CircleColorView
+                xmlns:circle="http://schemas.android.com/apk/res-auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                circle:circleColor="#2196F3"
+                circle:innerStrokeDividerWidth="6dp"
+                circle:innerStrokeWidth="0dp"
+                circle:innerType="inner"
+                circle:normalUseOutline="true"
+                circle:outlineStrokeColor="#2196F3"
+                circle:outlineStrokeWidth="2dp"
+                circle:selectUseFrame="false"
+                circle:selectUseOutline="true" />
+    </TableRow>
+
+    <TableRow>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:radius="5dp"
+                android:gravity="center"
+                android:hint="简述"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:layout_span="8"
+                android:maxLength="6"/>
+    </TableRow>
+    <TableRow>
+        <TextView
+                android:layout_span="8" />
+    </TableRow>
+    <TableRow>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="～"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+
+        <com.smart.colorview.normal.CircleColorView
+                xmlns:circle="http://schemas.android.com/apk/res-auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                circle:circleColor="#2196F3"
+                circle:innerStrokeDividerWidth="6dp"
+                circle:innerStrokeWidth="0dp"
+                circle:innerType="inner"
+                circle:normalUseOutline="true"
+                circle:outlineStrokeColor="#2196F3"
+                circle:outlineStrokeWidth="2dp"
+                circle:selectUseFrame="false"
+                circle:selectUseOutline="true" />
+    </TableRow>
+
+    <TableRow>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:radius="5dp"
+                android:gravity="center"
+                android:hint="简述"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:layout_span="8"
+                android:maxLength="6"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+                android:layout_span="8" />
+    </TableRow>
+    <TableRow>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="～"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+
+        <com.smart.colorview.normal.CircleColorView
+                xmlns:circle="http://schemas.android.com/apk/res-auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                circle:circleColor="#2196F3"
+                circle:innerStrokeDividerWidth="6dp"
+                circle:innerStrokeWidth="0dp"
+                circle:innerType="inner"
+                circle:normalUseOutline="true"
+                circle:outlineStrokeColor="#2196F3"
+                circle:outlineStrokeWidth="2dp"
+                circle:selectUseFrame="false"
+                circle:selectUseOutline="true" />
+    </TableRow>
+
+    <TableRow>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:radius="5dp"
+                android:gravity="center"
+                android:hint="简述"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:layout_span="8"
+                android:maxLength="6"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+                android:layout_span="8" />
+    </TableRow>
+    <TableRow>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="～"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+
+        <com.smart.colorview.normal.CircleColorView
+                xmlns:circle="http://schemas.android.com/apk/res-auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                circle:circleColor="#2196F3"
+                circle:innerStrokeDividerWidth="6dp"
+                circle:innerStrokeWidth="0dp"
+                circle:innerType="inner"
+                circle:normalUseOutline="true"
+                circle:outlineStrokeColor="#2196F3"
+                circle:outlineStrokeWidth="2dp"
+                circle:selectUseFrame="false"
+                circle:selectUseOutline="true" />
+    </TableRow>
+
+    <TableRow>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:radius="5dp"
+                android:gravity="center"
+                android:hint="简述"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:layout_span="8"
+                android:maxLength="6"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+                android:layout_span="8" />
+    </TableRow>
+    <TableRow>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="～"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#2C2626"
+                android:textSize="16sp" />
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:gravity="center"
+                android:hint="00"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:maxLength="2"
+                android:inputType="number" />
+
+        <com.smart.colorview.normal.CircleColorView
+                xmlns:circle="http://schemas.android.com/apk/res-auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                circle:circleColor="#2196F3"
+                circle:innerStrokeDividerWidth="6dp"
+                circle:innerStrokeWidth="0dp"
+                circle:innerType="inner"
+                circle:normalUseOutline="true"
+                circle:outlineStrokeColor="#2196F3"
+                circle:outlineStrokeWidth="2dp"
+                circle:selectUseFrame="false"
+                circle:selectUseOutline="true" />
+    </TableRow>
+
+    <TableRow>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext_background"
+                android:radius="5dp"
+                android:gravity="center"
+                android:hint="简述"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:layout_span="8"
+                android:maxLength="6"/>
+    </TableRow>
+</TableLayout>

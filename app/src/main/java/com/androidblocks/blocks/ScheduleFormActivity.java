@@ -23,42 +23,12 @@ public class ScheduleFormActivity extends AppCompatActivity {
     private Map<String, EditText> editTextMap = new HashMap<>();
     private List<String> editTextQueue = new ArrayList<>();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_form);
-        mainLinerLayout = this.findViewById(R.id.MyTable);
+        mainLinerLayout = this.findViewById(R.id.scheduleForm);
     }
 
-    public void onclickAdd(View view) {
-        EditText editText = new EditText(this);
-        editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                //输入之后你想做什么                num[cout]=Integer.parseInt(editText.getText().toString());
-            }
-        });
-
-        String viewId = UUID.randomUUID().toString();
-        editTextMap.put(viewId, editText);
-        editTextQueue.add(viewId);
-        mainLinerLayout.addView(editText);
-    }
-
-    public void onclickReduce(View view) {
-
-    }
-
-    public void onclickSubmit(View view) {
-
-    }
 
 }
