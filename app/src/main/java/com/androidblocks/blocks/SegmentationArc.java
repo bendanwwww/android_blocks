@@ -12,9 +12,7 @@ import com.androidblocks.vo.BlockInfo;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.DashPathEffect;
 import android.graphics.Paint;
-import android.graphics.PathEffect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
@@ -46,6 +44,8 @@ public class SegmentationArc extends View {
     private Integer[] pieceColors;
     /** 开始角度 */
     private float startAngle = 270f - pieceGap;
+    /** 距边框距离倍数 */
+    private float rectGap = 4f;
 
 
     public SegmentationArc(Context context) {
@@ -103,29 +103,14 @@ public class SegmentationArc extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(arcWidth);
         paint.setStrokeCap(Paint.Cap.BUTT);
-        // 设置文字风格
-        textPaint.setColor(getResources().getColor(R.color.dy_weight_bg));
         // 背景为灰色
         paint.setColor(getResources().getColor(R.color.black1));
         float firstStart = startAngle + pieceGap;
         for (int i = 0 ; i < standardProportions.length ; i++) {
+            // 绘制圆弧
             canvas.drawArc(rectf, firstStart, standardProportions[i], false, paint);
-            textPaint.setTextSize(80);
-            float x = (getWidth() - getHeight() / 2) / 2;
-            float y = getHeight() / 8;
-            canvas.drawText(blockInfoList.get(i).getText(), 150 * (i + 1), y, textPaint);
             firstStart += standardProportions[i] + pieceGap;
         }
-        textPaint.setAntiAlias(true);
-        textPaint.setTextSize(50);
-        textPaint.setColor(getResources().getColor(R.color.black1));
-        Typeface font = Typeface.createFromAsset(getContext().getAssets(),"fonts/1.ttf");
-        textPaint.setTypeface(font);
-        SimpleDateFormat sdf1 = new SimpleDateFormat( "yyyy年MM月dd日");
-        SimpleDateFormat sdf2 = new SimpleDateFormat( "HH:mm:ss");
-        canvas.drawText(sdf1.format(new Date()), getWidth() / 2 - 165f, getHeight() / 2 - 20, textPaint);
-        canvas.drawText(sdf2.format(new Date()), getWidth() / 2 - 100f, getHeight() / 2 + 55, textPaint);
-
     }
 
     /**
@@ -135,7 +120,7 @@ public class SegmentationArc extends View {
     public void drawPieceColor(Canvas canvas) {
         // 获取当前时间占圆弧的比例
         float timeProportions = getTimeInRoundProportions();
-        System.out.println(timeProportions);
+//        System.out.println(timeProportions);
         // 获取标准区间占比
         Float[] standardProportions = getStandardProportions();
         // 计算从哪个色块画起
@@ -171,6 +156,48 @@ public class SegmentationArc extends View {
 //        canvas.drawArc(rectf, lineIndex - 3f, 3, false, paint);
     }
 
+    /**
+     * 绘制文字
+     * @param canvas
+     */
+    private void drawText(Canvas canvas) {
+        Float[] standardProportions = getStandardProportions();
+        // 设置文字风格
+        textPaint.setColor(getResources().getColor(R.color.dy_weight_bg));
+        // 日程文字
+        float firstStart = startAngle + pieceGap;
+        for (int i = 0 ; i < standardProportions.length ; i++) {
+            // 圆的内径为 getWidth() / rectGap - arcWidth / 2
+            // 圆的外径为 getWidth() / rectGap + arcWidth / 2
+            // 圆的中径为 getWidth() / rectGap
+            // 圆心坐标为 (getWidth() / 2 , getHeight() / 2)
+            // 圆中径上任意一点坐标为
+            // x = getWidth() / 2 + getWidth() / rectGap * cos(φ * π / 180)
+            // y = getHeight() / 2 - getWidth() / rectGap * sin(φ * π / 180)
+            String text = blockInfoList.get(i).getText();
+            float textSize = 34f;
+            float angle = firstStart + standardProportions[i] / 2f;
+            float x = (float) (getWidth() / 2f + getWidth() / rectGap * Math.cos(angle * Math.PI / 180f));
+            float y = (float) (getHeight() / 2f + getWidth() / rectGap * Math.sin(angle * Math.PI / 180f));
+            textPaint.setTextSize(textSize);
+            Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/schedule.ttf");
+            textPaint.setTypeface(font);
+            // 因为文字本身有大小 需要修正坐标
+            canvas.drawText(text, x - (float) text.length() / 2f * textSize, y + textSize / 2f, textPaint);
+            firstStart += standardProportions[i] + pieceGap;
+        }
+        // 时间文字
+        textPaint.setAntiAlias(true);
+        textPaint.setTextSize(50);
+        textPaint.setColor(getResources().getColor(R.color.black1));
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/time.ttf");
+        textPaint.setTypeface(font);
+        SimpleDateFormat sdf1 = new SimpleDateFormat( "yyyy年MM月dd日");
+        SimpleDateFormat sdf2 = new SimpleDateFormat( "HH:mm:ss");
+        canvas.drawText(sdf1.format(new Date()), getWidth() / 2 - 165f, getHeight() / 2 - 20, textPaint);
+        canvas.drawText(sdf2.format(new Date()), getWidth() / 2 - 100f, getHeight() / 2 + 55, textPaint);
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -182,13 +209,16 @@ public class SegmentationArc extends View {
 //        获取圆的半径
 //        arcRadius = getWidth() / 2 - PaintUtils.dip2px(15);
 //        rectf = new RectF(getWidth() / 2 - arcRadius + Utils.dip2px(10), MARGINTOP, getWidth() / 2 + arcRadius - Utils.dip2px(10), 2 * arcRadius);
-        float x = (getWidth() - getHeight() / 2) / 2;
-        float y = getHeight() / 4;
+        // 据边框距离
+        float x = getWidth() / rectGap;
+        float y = getHeight() / rectGap;
         rectf = new RectF(x, y, getWidth() - x, getHeight() - y);
         // 绘制区间
         drawPiece(canvas);
         // 绘制颜色
         drawPieceColor(canvas);
+        // 绘制文字
+        drawText(canvas);
     }
 
     private void setArcAttributes(AttributeSet attrs) {
