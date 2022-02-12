@@ -8,6 +8,7 @@ import java.util.List;
 import com.androidblocks.commom.GlobalVariable;
 import com.androidblocks.utils.DateUtils;
 import com.androidblocks.utils.PaintUtils;
+import com.androidblocks.utils.TextUtils;
 import com.androidblocks.vo.BlockInfo;
 
 import android.content.Context;
@@ -175,27 +176,33 @@ public class SegmentationArc extends View {
             // x = getWidth() / 2 + getWidth() / rectGap * cos(φ * π / 180)
             // y = getHeight() / 2 - getWidth() / rectGap * sin(φ * π / 180)
             String text = blockInfoList.get(i).getText();
-            float textSize = 34f;
+            float scheduleTextSize = 34f;
             float angle = firstStart + standardProportions[i] / 2f;
             float x = (float) (getWidth() / 2f + getWidth() / rectGap * Math.cos(angle * Math.PI / 180f));
             float y = (float) (getHeight() / 2f + getWidth() / rectGap * Math.sin(angle * Math.PI / 180f));
-            textPaint.setTextSize(textSize);
+            textPaint.setTextSize(scheduleTextSize);
             Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/schedule.ttf");
             textPaint.setTypeface(font);
             // 因为文字本身有大小 需要修正坐标
-            canvas.drawText(text, x - (float) text.length() / 2f * textSize, y + textSize / 2f, textPaint);
+            canvas.drawText(text, x - TextUtils.textLength(text) / 2f * scheduleTextSize, y + scheduleTextSize / 2f, textPaint);
             firstStart += standardProportions[i] + pieceGap;
         }
         // 时间文字
         textPaint.setAntiAlias(true);
-        textPaint.setTextSize(50);
+        float timeTextSize = 50f;
+        float timeTextGap = 20f;
+        textPaint.setTextSize(timeTextSize);
         textPaint.setColor(getResources().getColor(R.color.black1));
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/time.ttf");
         textPaint.setTypeface(font);
         SimpleDateFormat sdf1 = new SimpleDateFormat( "yyyy年MM月dd日");
         SimpleDateFormat sdf2 = new SimpleDateFormat( "HH:mm:ss");
-        canvas.drawText(sdf1.format(new Date()), getWidth() / 2 - 165f, getHeight() / 2 - 20, textPaint);
-        canvas.drawText(sdf2.format(new Date()), getWidth() / 2 - 100f, getHeight() / 2 + 55, textPaint);
+        String date = sdf1.format(new Date());
+        String time = sdf2.format(new Date());
+        String week = DateUtils.getWeekStr();
+        canvas.drawText(date, getWidth() / 2f - TextUtils.textLength(date) * timeTextSize / 2f, getHeight() / 2f - timeTextSize * 0.5f - timeTextGap, textPaint);
+        canvas.drawText(time, getWidth() / 2f - TextUtils.textLength(time) * timeTextSize / 2f, getHeight() / 2f + timeTextSize / 2f, textPaint);
+        canvas.drawText(week, getWidth() / 2f - TextUtils.textLength(week) * timeTextSize / 2f, getHeight() / 2f + timeTextSize * 1.5f + timeTextGap, textPaint);
     }
 
     @Override
