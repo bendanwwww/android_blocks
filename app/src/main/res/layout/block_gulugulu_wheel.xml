@@ -9,7 +9,7 @@
               android:background="#FFFFFF"
 >
 
-    <com.androidblocks.blocks.SegmentationArc
+    <com.androidblocks.view.SegmentationArc
             android:id="@+id/gulugulu"
             android:layout_width="550dp"
             android:layout_height="550dp"

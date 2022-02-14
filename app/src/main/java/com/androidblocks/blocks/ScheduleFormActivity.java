@@ -17,6 +17,11 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * 日程表单
+ *
+ * @author lsy
+ */
 public class ScheduleFormActivity extends AppCompatActivity {
 
     private LinearLayout mainLinerLayout;

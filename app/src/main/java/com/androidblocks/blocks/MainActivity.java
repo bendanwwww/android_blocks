@@ -1,6 +1,7 @@
 package com.androidblocks.blocks;
 
 import com.androidblocks.utils.PaintUtils;
+import com.androidblocks.view.SegmentationArc;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -9,6 +10,11 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * 主页 (轮子)
+ *
+ * @author lsy
+ */
 public class MainActivity extends AppCompatActivity {
 
     private Handler handler;
@@ -29,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onclick(View view) {
-        Intent intent = new Intent(this,ScheduleFormActivity.class);
+        Intent intent = new Intent(this,ScheduleListActivity.class);
         startActivity(intent);
     }
 

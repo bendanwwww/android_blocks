@@ -19,15 +19,15 @@ public class GlobalVariable {
         blockInfoList = new ArrayList<>();
         blockInfoList.add(new BlockInfo("睡眠", "", R.color.sleep_color, 0l, 0l, 30f));
         blockInfoList.add(new BlockInfo("早餐", "", R.color.main_top_color3, 0l, 0l, 2f));
-        blockInfoList.add(new BlockInfo("", "", R.color.white2, 0l, 0l, 4f));
+        blockInfoList.add(new BlockInfo("", "", R.color.white2, 0l, 0l, 4f, true));
         blockInfoList.add(new BlockInfo("工作", "", R.color.main_top_color2, 0l, 0l, 16f));
         blockInfoList.add(new BlockInfo("午餐", "", R.color.colorPrimary, 0l, 0l, 4f));
         blockInfoList.add(new BlockInfo("工作", "", R.color.colorAccent, 0l, 0l, 16f));
-        blockInfoList.add(new BlockInfo("", "", R.color.white2, 0l, 0l, 4f));
+        blockInfoList.add(new BlockInfo("", "", R.color.white2, 0l, 0l, 4f, true));
         blockInfoList.add(new BlockInfo("工作", "", R.color.main_top_color4, 0l, 0l, 16f));
         blockInfoList.add(new BlockInfo("晚餐", "", R.color.purple_700, 0l, 0l, 5f));
         blockInfoList.add(new BlockInfo("娱乐", "", R.color.purple_200, 0l, 0l, 10f));
-        blockInfoList.add(new BlockInfo("", "", R.color.white2, 0l, 0l, 6f));
+        blockInfoList.add(new BlockInfo("", "", R.color.white2, 0l, 0l, 6f, true));
         return blockInfoList;
     }
 

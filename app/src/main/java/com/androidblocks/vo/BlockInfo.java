@@ -19,16 +19,23 @@ public class BlockInfo {
     private long endTime;
     /** 占比 */
     private float proportions;
+    /** 是否为空闲区间 */
+    private boolean idle = false;
 
     public BlockInfo() {}
 
     public BlockInfo(String text, String info, int color, long startTime, long endTime, float proportions) {
+        this(text, info, color, startTime, endTime, proportions, false);
+    }
+
+    public BlockInfo(String text, String info, int color, long startTime, long endTime, float proportions, boolean idle) {
         this.text = text;
         this.info = info;
         this.color = color;
         this.startTime = startTime;
         this.endTime = endTime;
         this.proportions = proportions;
+        this.idle = idle;
     }
 
     public String getText() {
@@ -77,5 +84,13 @@ public class BlockInfo {
 
     public void setProportions(float proportions) {
         this.proportions = proportions;
+    }
+
+    public boolean isIdle() {
+        return idle;
+    }
+
+    public void setIdle(boolean idle) {
+        this.idle = idle;
     }
 }
