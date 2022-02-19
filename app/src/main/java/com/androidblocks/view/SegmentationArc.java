@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.androidblocks.blocks.R;
 import com.androidblocks.commom.GlobalVariable;
+import com.androidblocks.enums.ViewEnum;
 import com.androidblocks.utils.DateUtils;
 import com.androidblocks.utils.PaintUtils;
 import com.androidblocks.utils.TextUtils;
@@ -20,11 +21,9 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class SegmentationArc extends View {
+public class SegmentationArc extends AbstractView {
 
-    private static final float ROUND_DEGREE = 360f;
-
-    private static final String TAG = "SegmentationArc";
+    private static final ViewEnum TAG = ViewEnum.SEGMENTATION_ROUND;
 
     private Context mContext;
 
@@ -81,7 +80,7 @@ public class SegmentationArc extends View {
      * @return
      */
     private float getTimeInRoundProportions() {
-        return getTimeProportions() * (ROUND_DEGREE - pieceGap * pieceProportions.length);
+        return getTimeProportions() * (PaintUtils.getRoundDegree() - pieceGap * pieceProportions.length);
     }
 
     /**
@@ -89,7 +88,7 @@ public class SegmentationArc extends View {
      * @return
      */
     private Float[] getStandardProportions() {
-        float oneProportion = (ROUND_DEGREE - pieceGap * pieceProportions.length) / (float) Arrays.stream(pieceProportions).mapToDouble(Float::doubleValue).sum();
+        float oneProportion = (PaintUtils.getRoundDegree() - pieceGap * pieceProportions.length) / (float) Arrays.stream(pieceProportions).mapToDouble(Float::doubleValue).sum();
         return Arrays.stream(pieceProportions).map(p -> p * oneProportion).toArray(Float[]::new);
     }
 
@@ -211,7 +210,7 @@ public class SegmentationArc extends View {
         super.onDraw(canvas);
         paint = new Paint();
         textPaint = new Paint();
-        blockInfoList = GlobalVariable.getBlockInfoList();
+        blockInfoList = GlobalVariable.getBlockInfoList(BlockInfo.EffectType.WORK_DAY);
         pieceProportions = blockInfoList.stream().map(b -> b.getProportions()).toArray(Float[]::new);
         pieceColors = blockInfoList.stream().map(b -> b.getColor()).toArray(Integer[]::new);
 //        获取圆的半径
@@ -227,6 +226,11 @@ public class SegmentationArc extends View {
         drawPieceColor(canvas);
         // 绘制文字
         drawText(canvas);
+    }
+
+    @Override
+    ViewEnum viewTag() {
+        return TAG;
     }
 
     private void setArcAttributes(AttributeSet attrs) {

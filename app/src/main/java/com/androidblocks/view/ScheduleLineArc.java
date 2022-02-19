@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.androidblocks.blocks.R;
 import com.androidblocks.commom.GlobalVariable;
+import com.androidblocks.enums.ViewEnum;
 import com.androidblocks.utils.PaintUtils;
 import com.androidblocks.utils.TextUtils;
 import com.androidblocks.vo.BlockInfo;
@@ -13,14 +14,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.nfc.Tag;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class ScheduleLineArc extends View {
+public class ScheduleLineArc extends AbstractView {
 
-    private static final String TAG = "ScheduleLineArc";
+    private static final ViewEnum TAG = ViewEnum.SCHEDULE_LINE;
 
     private Context mContext;
 
@@ -28,8 +29,6 @@ public class ScheduleLineArc extends View {
     private Paint paint;
     /** 文字画笔 */
     private Paint textPaint;
-    /** 画布 */
-    private RectF rectf;
     /** 区间信息 */
     private List<BlockInfo> blockInfoList;
     /** 矩形高度 */
@@ -38,6 +37,9 @@ public class ScheduleLineArc extends View {
     private float rectLineColorProportion;
     /** 矩形色差 */
     private float rectChromaticAberration;
+    /** 最后按钮的坐标 */
+    private float[] buttonX = new float[2];
+    private float[] buttonY = new float[2];
 
     public ScheduleLineArc(Context context) {
         super(context);
@@ -93,6 +95,18 @@ public class ScheduleLineArc extends View {
             canvas.drawText(blockInfo.getText(), textX, top + (rectHeight + textSize) / 2f, textPaint);
             canvas.drawText("50%", getWidth() - textSize * TextUtils.textLength("50%") - textX, top + (rectHeight + textSize) / 2f, textPaint);
         }
+        // 绘制按钮
+        String buttonText = "+";
+        float buttonSize = 50f;
+        float buttonTop = rectHeight * (blockInfoList.size() + 1);
+        paint.setColor(getResources().getColor(R.color.purple_700));
+        textPaint.setTextSize(buttonSize);
+        textPaint.setColor(getResources().getColor(R.color.dy_weight_bg));
+        canvas.drawRect(0, buttonTop, getWidth(), buttonTop + rectHeight, paint);
+        canvas.drawText(buttonText, (getWidth() + TextUtils.textLength(buttonText)) / 2f, buttonTop + (rectHeight + textSize) / 2f, textPaint);
+        // 记录一下按钮的坐标 用于监听点击事件
+        buttonX = new float[]{0f, getWidth()};
+        buttonY = new float[]{buttonTop, buttonTop + rectHeight};
     }
 
     @Override
@@ -100,10 +114,15 @@ public class ScheduleLineArc extends View {
         super.onDraw(canvas);
         paint = new Paint();
         textPaint = new Paint();
-        blockInfoList = GlobalVariable.getBlockInfoList();
+        blockInfoList = GlobalVariable.getBlockInfoList(BlockInfo.EffectType.WORK_DAY);
 //        rectf = new RectF(0, 0, getWidth(), getHeight());
         // 绘制矩形
         drawRect(canvas);
+    }
+
+    @Override
+    ViewEnum viewTag() {
+        return TAG;
     }
 
     private void setArcAttributes(AttributeSet attrs) {
@@ -124,5 +143,13 @@ public class ScheduleLineArc extends View {
 
     public void setRectChromaticAberration(float rectChromaticAberration) {
         this.rectChromaticAberration = rectChromaticAberration;
+    }
+
+    public float[] getButtonX() {
+        return buttonX;
+    }
+
+    public float[] getButtonY() {
+        return buttonY;
     }
 }

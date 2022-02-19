@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.androidblocks.blocks"
-        minSdkVersion 30
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -35,6 +35,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'com.github.RickyHal:EColorPicker:1.0.4'
     implementation 'com.smart.colorview:colorview:1.1.1'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    implementation 'org.apache.commons:commons-lang3:3.6'
+    implementation 'com.alibaba:fastjson:1.2.79'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

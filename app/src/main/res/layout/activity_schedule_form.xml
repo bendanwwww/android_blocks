@@ -13,6 +13,7 @@
 
     <TableRow>
         <EditText
+                android:id="@+id/time1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -36,6 +37,7 @@
                 android:textColor="#2C2626"
                 android:textSize="16sp" />
         <EditText
+                android:id="@+id/time2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -61,6 +63,7 @@
                 android:textColor="#2C2626"
                 android:textSize="16sp" />
         <EditText
+                android:id="@+id/time3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -84,6 +87,7 @@
                 android:textColor="#2C2626"
                 android:textSize="16sp" />
         <EditText
+                android:id="@+id/time4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -101,6 +105,7 @@
 
         <com.smart.colorview.normal.CircleColorView
                 xmlns:circle="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/circleColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -117,132 +122,7 @@
 
     <TableRow>
         <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:radius="5dp"
-                android:gravity="center"
-                android:hint="简述"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:layout_span="8"
-                android:maxLength="6"/>
-    </TableRow>
-    <TableRow>
-        <TextView
-                android:layout_span="8" />
-    </TableRow>
-    <TableRow>
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text=":"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="～"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text=":"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-
-        <com.smart.colorview.normal.CircleColorView
-                xmlns:circle="http://schemas.android.com/apk/res-auto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                circle:circleColor="#2196F3"
-                circle:innerStrokeDividerWidth="6dp"
-                circle:innerStrokeWidth="0dp"
-                circle:innerType="inner"
-                circle:normalUseOutline="true"
-                circle:outlineStrokeColor="#2196F3"
-                circle:outlineStrokeWidth="2dp"
-                circle:selectUseFrame="false"
-                circle:selectUseOutline="true" />
-    </TableRow>
-
-    <TableRow>
-        <EditText
+                android:id="@+id/briefly"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -261,115 +141,8 @@
     </TableRow>
 
     <TableRow>
-        <TextView
-                android:layout_span="8" />
-    </TableRow>
-    <TableRow>
         <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text=":"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="～"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text=":"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-
-        <com.smart.colorview.normal.CircleColorView
-                xmlns:circle="http://schemas.android.com/apk/res-auto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                circle:circleColor="#2196F3"
-                circle:innerStrokeDividerWidth="6dp"
-                circle:innerStrokeWidth="0dp"
-                circle:innerType="inner"
-                circle:normalUseOutline="true"
-                circle:outlineStrokeColor="#2196F3"
-                circle:outlineStrokeWidth="2dp"
-                circle:selectUseFrame="false"
-                circle:selectUseOutline="true" />
-    </TableRow>
-
-    <TableRow>
-        <EditText
+                android:id="@+id/scheduleInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -378,266 +151,11 @@
                 android:background="@drawable/custom_edittext_background"
                 android:radius="5dp"
                 android:gravity="center"
-                android:hint="简述"
+                android:hint="详细安排"
                 android:textColorHint="#FFFFFF"
                 android:textColor="#FFFFFF"
                 android:padding="10dp"
                 android:textSize="16sp"
-                android:layout_span="8"
-                android:maxLength="6"/>
-    </TableRow>
-
-    <TableRow>
-        <TextView
-                android:layout_span="8" />
-    </TableRow>
-    <TableRow>
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text=":"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="～"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text=":"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-
-        <com.smart.colorview.normal.CircleColorView
-                xmlns:circle="http://schemas.android.com/apk/res-auto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                circle:circleColor="#2196F3"
-                circle:innerStrokeDividerWidth="6dp"
-                circle:innerStrokeWidth="0dp"
-                circle:innerType="inner"
-                circle:normalUseOutline="true"
-                circle:outlineStrokeColor="#2196F3"
-                circle:outlineStrokeWidth="2dp"
-                circle:selectUseFrame="false"
-                circle:selectUseOutline="true" />
-    </TableRow>
-
-    <TableRow>
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:radius="5dp"
-                android:gravity="center"
-                android:hint="简述"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:layout_span="8"
-                android:maxLength="6"/>
-    </TableRow>
-
-    <TableRow>
-        <TextView
-                android:layout_span="8" />
-    </TableRow>
-    <TableRow>
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text=":"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="～"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text=":"
-                android:textColor="#2C2626"
-                android:textSize="16sp" />
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:gravity="center"
-                android:hint="00"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:maxLength="2"
-                android:inputType="number" />
-
-        <com.smart.colorview.normal.CircleColorView
-                xmlns:circle="http://schemas.android.com/apk/res-auto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                circle:circleColor="#2196F3"
-                circle:innerStrokeDividerWidth="6dp"
-                circle:innerStrokeWidth="0dp"
-                circle:innerType="inner"
-                circle:normalUseOutline="true"
-                circle:outlineStrokeColor="#2196F3"
-                circle:outlineStrokeWidth="2dp"
-                circle:selectUseFrame="false"
-                circle:selectUseOutline="true" />
-    </TableRow>
-
-    <TableRow>
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext_background"
-                android:radius="5dp"
-                android:gravity="center"
-                android:hint="简述"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:layout_span="8"
-                android:maxLength="6"/>
+                android:layout_span="8"/>
     </TableRow>
 </TableLayout>
