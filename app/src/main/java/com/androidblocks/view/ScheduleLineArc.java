@@ -90,9 +90,10 @@ public class ScheduleLineArc extends AbstractView {
             canvas.drawRect(left, top, getWidth(), top + rectHeight, paint);
             // 绘制矩形文字
             Typeface lineFont = Typeface.createFromAsset(getContext().getAssets(), "fonts/schedule_line.ttf");
+            String lineText = blockInfo.getText() + " ("+ blockInfo.getStartHour() +" ～ "+ blockInfo.getEndHour() +")";
             textPaint.setTypeface(lineFont);
             textPaint.setColor(getResources().getColor(R.color.dy_weight_bg));
-            canvas.drawText(blockInfo.getText(), textX, top + (rectHeight + textSize) / 2f, textPaint);
+            canvas.drawText(lineText, textX, top + (rectHeight + textSize) / 2f, textPaint);
             canvas.drawText("50%", getWidth() - textSize * TextUtils.textLength("50%") - textX, top + (rectHeight + textSize) / 2f, textPaint);
         }
         // 绘制按钮
