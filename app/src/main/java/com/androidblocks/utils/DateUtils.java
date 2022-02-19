@@ -73,6 +73,13 @@ public class DateUtils {
      * @return
      */
     public static String getHour(String time1, String time2) {
+        // 向前补0
+        if (time1.length() == 1) {
+            time1 += "0";
+        }
+        if (time2.length() == 1) {
+            time2 += "0";
+        }
         String hour = time1 + TIME_SPLIT + time2;
         // 判断时间是否合法
         try {
