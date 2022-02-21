@@ -1,5 +1,8 @@
 package com.androidblocks.vo;
 
+import com.androidblocks.db.ColumnName;
+import com.androidblocks.db.PrimaryKey;
+
 /**
  * 区间信息
  *
@@ -8,26 +11,37 @@ package com.androidblocks.vo;
 public class BlockInfo {
 
     /** id */
+    @PrimaryKey(name = "id")
     private String id;
     /** 区间生效类型 */
+    @ColumnName(name = "effect_type")
     private EffectType effectType;
     /** 描述文字 */
+    @ColumnName(name = "text")
     private String text;
     /** 详细信息 */
+    @ColumnName(name = "info")
     private String info;
     /** 区间颜色 */
+    @ColumnName(name = "color")
     private int color;
     /** 开始时间 */
+    @ColumnName(name = "start_hour")
     private String startHour;
     /** 结束时间 */
+    @ColumnName(name = "end_hour")
     private String endHour;
     /** 开始日期时间戳 */
+    @ColumnName(name = "start_time")
     private long startTime;
     /** 结束日期时间戳 */
+    @ColumnName(name = "end_time")
     private long endTime;
     /** 占比 */
+    @ColumnName(name = "proportions")
     private float proportions;
     /** 是否为空闲区间 */
+    @ColumnName(name = "idle")
     private boolean idle = false;
 
     public BlockInfo() {}
