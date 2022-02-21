@@ -1,5 +1,7 @@
 package com.androidblocks.dao;
 
+import java.util.List;
+
 import com.androidblocks.db.SqliteAbstract;
 import com.androidblocks.vo.BlockInfo;
 
@@ -9,13 +11,27 @@ import androidx.annotation.Nullable;
 
 public class BlockInfoDAO extends SqliteAbstract<BlockInfo> {
 
-    public BlockInfoDAO(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    private static final String DB_FILE_NAME = "block_info";
+    private static final int DB_VERSION = 1;
+
+    public BlockInfoDAO(@Nullable Context context, @Nullable SQLiteDatabase.CursorFactory factory) {
+        super(context, DB_FILE_NAME, factory, DB_VERSION);
+    }
+
+    public List<BlockInfo> queryAll() {
+        String sql = "select * from " + getDbName() + ";";
+        return query(sql, BlockInfo.class);
+    }
+
+    public void batchUpdate(List<BlockInfo> blockInfoList) {
+        for (BlockInfo blockInfo : blockInfoList) {
+            merge(blockInfo);
+        }
     }
 
     @Override
     public String getDbName() {
-        return BlockInfo.class.getName();
+        return BlockInfo.class.getSimpleName();
     }
 
     @Override
@@ -23,14 +39,14 @@ public class BlockInfoDAO extends SqliteAbstract<BlockInfo> {
         return "create table " + getDbName()
                 + " ( "
                 + " id varchar primary key not null , "
-                + " effectType varchar(50) , "
+                + " effect_type varchar(50) , "
                 + " `text` varchar(100) , "
                 + " info varchar(500) , "
                 + " color int , "
-                + " startHour varchar , "
-                + " endHour varchar , "
-                + " startTime bigint , "
-                + " endTime bigint , "
+                + " start_hour varchar , "
+                + " end_hour varchar , "
+                + " start_time bigint , "
+                + " end_time bigint , "
                 + " proportions float , "
                 + " idle varchar(10)"
                 + " );";

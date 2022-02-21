@@ -47,11 +47,11 @@ public abstract class SqliteAbstract<T> extends SQLiteOpenHelper {
      * @param params
      * @return
      */
-    public List<T> query(String sql, String... params) {
+    public List<T> query(String sql, Class<T> objClass, String... params) {
         List<T> resList = new ArrayList<>();
         List<JSONObject> results = getResults(sql, params);
         if (CollectionUtils.isNotEmpty(results)) {
-            resList = results.stream().map(j -> JSON.parseObject(j.toString(), new TypeReference<T>() {})).collect(Collectors.toList());
+            resList = results.stream().map(j -> JSON.parseObject(j.toString(), objClass)).collect(Collectors.toList());
         }
         return resList;
     }
@@ -63,7 +63,7 @@ public abstract class SqliteAbstract<T> extends SQLiteOpenHelper {
      */
     public void merge(T obj) {
         Class objClass = obj.getClass();
-        boolean hasPrimaryKey = objClass.isAnnotationPresent(PrimaryKey.class);
+        boolean hasPrimaryKey = ClassUtils.hasAnnotation(objClass, PrimaryKey.class);
         if (!hasPrimaryKey) {
             return;
         }

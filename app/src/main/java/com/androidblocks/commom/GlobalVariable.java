@@ -30,6 +30,14 @@ public class GlobalVariable {
     private static volatile Map<ViewEnum, View> viewMap = new HashMap<>();
     /** 日程区间列表 */
     private static volatile Map<String, BlockInfo> blockInfoMap = new HashMap<>();
+    /** 日程是否被更新 */
+    private static volatile boolean blockInfoUpdate = false;
+    /** 日程锁 */
+    private static final Object BLOC_LOCK = new Object();
+
+    public static List<BlockInfo> getBlockInfoList() {
+        return new ArrayList<>(blockInfoMap.values());
+    }
 
     public static List<BlockInfo> getBlockInfoList(BlockInfo.EffectType effectType) {
         List<BlockInfo> blockInfoList = new ArrayList<>(blockInfoMap.values());
@@ -102,6 +110,19 @@ public class GlobalVariable {
         for (BlockInfo blockInfo : blockInfos) {
             GlobalVariable.blockInfoMap.put(blockInfo.getId(), blockInfo);
         }
+        setBlockInfoUpdate(true);
+    }
+
+    public static boolean getBlockInfoUpdate() {
+        synchronized (BLOC_LOCK) {
+            return blockInfoUpdate;
+        }
+    }
+
+    public static void setBlockInfoUpdate(boolean blockInfoUpdate) {
+        synchronized (BLOC_LOCK) {
+            GlobalVariable.blockInfoUpdate = blockInfoUpdate;
+        }
     }
 
     public static View getView(ViewEnum key) {
@@ -112,17 +133,4 @@ public class GlobalVariable {
         viewMap.put(key, view);
     }
 
-/**
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "睡眠", "", R.color.sleep_color, 0l, 0l, 30f));
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "早餐", "", R.color.main_top_color3, 0l, 0l, 2f));
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "", "", R.color.white2, 0l, 0l, 4f, true));
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "工作", "", R.color.main_top_color2, 0l, 0l, 16f));
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "午餐", "", R.color.colorPrimary, 0l, 0l, 4f));
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "工作", "", R.color.colorAccent, 0l, 0l, 16f));
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "", "", R.color.white2, 0l, 0l, 4f, true));
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "工作", "", R.color.main_top_color4, 0l, 0l, 16f));
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "晚餐", "", R.color.purple_700, 0l, 0l, 5f));
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "娱乐", "", R.color.purple_200, 0l, 0l, 10f));
- *         blockInfoList.add(new BlockInfo(BlockInfo.EffectType.WORK_DAY, "", "", R.color.white2, 0l, 0l, 6f, true));
- */
 }

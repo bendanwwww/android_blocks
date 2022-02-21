@@ -62,7 +62,7 @@ public class ScheduleLineArc extends AbstractView {
         paint.setPathEffect(null);
         paint.setAntiAlias(true);
         // 过滤空闲时间
-        blockInfoList = blockInfoList.stream().filter(b -> !b.isIdle()).collect(Collectors.toList());
+        blockInfoList = blockInfoList.stream().filter(b -> !b.getIdle()).collect(Collectors.toList());
         // 绘制表头
         paint.setColor(Color.WHITE);
         canvas.drawRect(0, 0, getWidth(), rectHeight, paint);

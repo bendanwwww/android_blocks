@@ -1,5 +1,10 @@
 package com.androidblocks.utils;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+
+import com.androidblocks.db.PrimaryKey;
+
 /**
  * class相关工具类
  *
@@ -43,5 +48,15 @@ public class ClassUtils {
         return "set"
                 + fieldName.substring(startIndex, startIndex + 1).toUpperCase()
                 + fieldName.substring(startIndex + 1);
+    }
+
+    public static boolean hasAnnotation(Class objClass, Class<? extends Annotation> annotationClass) {
+        Field[] fields = objClass.getDeclaredFields();
+        for (Field field : fields) {
+            if(field.isAnnotationPresent(annotationClass)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

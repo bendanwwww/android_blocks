@@ -9,7 +9,6 @@ import com.androidblocks.db.PrimaryKey;
  * @author lsy
  */
 public class BlockInfo {
-
     /** id */
     @PrimaryKey(name = "id")
     private String id;
@@ -186,7 +185,7 @@ public class BlockInfo {
         this.proportions = proportions;
     }
 
-    public boolean isIdle() {
+    public boolean getIdle() {
         return idle;
     }
 
