@@ -13,7 +13,7 @@ import android.content.Context;
  */
 public class BlockInfoThread implements Runnable {
 
-    private static final int THREAD_SLEEP = 1000;
+    private static final int THREAD_SLEEP = 100;
 
     private BlockInfoDAO blockInfoDAO;
 
@@ -26,7 +26,7 @@ public class BlockInfoThread implements Runnable {
         try {
             while (true) {
                 if (GlobalVariable.getBlockInfoUpdate()) {
-                    blockInfoDAO.batchUpdate(GlobalVariable.getBlockInfoList());
+                    blockInfoDAO.batchUpdate(GlobalVariable.getAllBlockInfoList());
                     GlobalVariable.setBlockInfoUpdate(false);
                 }
                 Thread.sleep(THREAD_SLEEP);

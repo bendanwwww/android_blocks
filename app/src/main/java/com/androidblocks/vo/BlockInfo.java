@@ -42,26 +42,29 @@ public class BlockInfo {
     /** 是否为空闲区间 */
     @ColumnName(name = "idle")
     private boolean idle = false;
+    /** 删除标识 (0: 正常 1: 删除) */
+    @ColumnName(name = "delete_state")
+    private int deleteState;
 
     public BlockInfo() {}
 
     public BlockInfo(String id, EffectType effectType, String text, String info, int color, String startHour, String endHour, float proportions, boolean idle) {
-        this(id, effectType, text, info, color, startHour, endHour, 0L, 0L, proportions, idle);
+        this(id, effectType, text, info, color, startHour, endHour, 0L, 0L, proportions, idle, 0);
     }
 
     public BlockInfo(String id, EffectType effectType, String text, String info, int color, long startTime, long endTime, float proportions, boolean idle) {
-        this(id, effectType, text, info, color, "", "", startTime, endTime, proportions, idle);
+        this(id, effectType, text, info, color, "", "", startTime, endTime, proportions, idle, 0);
     }
 
     public BlockInfo(String id, EffectType effectType, String text, String info, int color, String startHour, String endHour, float proportions) {
-        this(id, effectType, text, info, color, startHour, endHour, 0L, 0L, proportions, false);
+        this(id, effectType, text, info, color, startHour, endHour, 0L, 0L, proportions, false, 0);
     }
 
     public BlockInfo(String id, EffectType effectType, String text, String info, int color, long startTime, long endTime, float proportions) {
-        this(id, effectType, text, info, color, "", "", startTime, endTime, proportions, false);
+        this(id, effectType, text, info, color, "", "", startTime, endTime, proportions, false, 0);
     }
 
-    public BlockInfo(String id, EffectType effectType, String text, String info, int color, String startHour, String endHour, long startTime, long endTime, float proportions, boolean idle) {
+    public BlockInfo(String id, EffectType effectType, String text, String info, int color, String startHour, String endHour, long startTime, long endTime, float proportions, boolean idle, int deleteState) {
         this.id = id;
         this.effectType = effectType;
         this.text = text;
@@ -73,6 +76,7 @@ public class BlockInfo {
         this.endTime = endTime;
         this.proportions = proportions;
         this.idle = idle;
+        this.deleteState = deleteState;
     }
 
     /**
@@ -223,5 +227,13 @@ public class BlockInfo {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public int getDeleteState() {
+        return deleteState;
+    }
+
+    public void setDeleteState(int deleteState) {
+        this.deleteState = deleteState;
     }
 }

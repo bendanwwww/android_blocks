@@ -7,6 +7,7 @@ import com.androidblocks.view.ScheduleLineArc;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 /**
  * 日程列表
@@ -27,12 +28,16 @@ public class ScheduleListActivity extends AbstractActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        // 更新画布
-        GlobalVariable.getView(ViewEnum.SEGMENTATION_ROUND).invalidate();
-        // 跳转至主页
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            // 更新画布
+            GlobalVariable.getView(ViewEnum.SEGMENTATION_ROUND).invalidate();
+            // 跳转至主页
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

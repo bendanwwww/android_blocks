@@ -20,7 +20,9 @@ import com.androidblocks.vo.BlockInfo;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 /**
  * 主页 (轮子)
@@ -41,6 +43,8 @@ public class MainActivity extends AbstractActivity {
     private DaySlideArc daySlideArc;
     private HeadLineArc headLineArc;
 
+    private long exitTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +62,22 @@ public class MainActivity extends AbstractActivity {
         Thread blockInfoThread = new Thread(new BlockInfoThread(getApplicationContext()));
         thread.start();
         blockInfoThread.start();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (System.currentTimeMillis() - exitTime < 1000L) {
+                GlobalVariable.closeAllActivity();
+                onDestroy();
+                System.exit(0);
+            } else {
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

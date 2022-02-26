@@ -19,7 +19,7 @@ public class BlockInfoDAO extends SqliteAbstract<BlockInfo> {
     }
 
     public List<BlockInfo> queryAll() {
-        String sql = "select * from " + getDbName() + ";";
+        String sql = "select * from " + getDbName() + " where delete_state = 0;";
         return query(sql, BlockInfo.class);
     }
 
@@ -48,7 +48,8 @@ public class BlockInfoDAO extends SqliteAbstract<BlockInfo> {
                 + " start_time bigint , "
                 + " end_time bigint , "
                 + " proportions float , "
-                + " idle varchar(10)"
+                + " idle varchar(10) , "
+                + " delete_state int"
                 + " );";
     }
 }

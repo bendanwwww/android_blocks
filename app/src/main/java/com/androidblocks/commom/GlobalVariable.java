@@ -40,14 +40,22 @@ public class GlobalVariable {
     /** 日程锁 */
     private static final Object BLOC_LOCK = new Object();
 
+    public static List<BlockInfo> getAllBlockInfoList() {
+        return new ArrayList<>(blockInfoMap.values()).stream()
+                .collect(Collectors.toList());
+    }
+
     public static List<BlockInfo> getBlockInfoList() {
-        return new ArrayList<>(blockInfoMap.values());
+        return new ArrayList<>(blockInfoMap.values()).stream()
+                .filter(b -> b.getDeleteState() == 0)
+                .collect(Collectors.toList());
     }
 
     public static List<BlockInfo> getBlockInfoList(BlockInfo.EffectType effectType) {
         List<BlockInfo> blockInfoList = new ArrayList<>(blockInfoMap.values());
         List<BlockInfo> resList = blockInfoList.stream()
                 .filter(b -> b.getEffectType().equals(effectType))
+                .filter(b -> b.getDeleteState() == 0)
                 .sorted((b1, b2) -> DateUtils.afterHour(b1.getStartHour(), b2.getStartHour()) ? -1 : 1)
                 .map(b -> {
                     b.setStartTime(DateUtils.getHourTimestamp(b.getStartHour()));
@@ -112,7 +120,7 @@ public class GlobalVariable {
             return;
         }
         if (blockInfoMap.containsKey(id)) {
-            blockInfoMap.remove(id);
+            blockInfoMap.get(id).setDeleteState(1);
         }
         setBlockInfoUpdate(true);
     }
@@ -154,5 +162,10 @@ public class GlobalVariable {
 
     public static void setActivityMap(ActivityEnum key, Activity activity) {
         activityMap.put(key, activity);
+    }
+
+    public static void closeAllActivity() {
+        activityMap.values().stream().forEach(a -> a.finish());
+        activityMap.clear();
     }
 }
