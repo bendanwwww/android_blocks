@@ -65,7 +65,11 @@ public class MainActivity extends AbstractActivity {
         return TAG;
     }
 
+    // TODO 需挪至启动时执行 且执行一次
     private void initBlock() {
+        if (CollectionUtils.isNotEmpty(GlobalVariable.getBlockInfoList())) {
+            return;
+        }
         BlockInfoDAO blockInfoDAO = (BlockInfoDAO) DaoFactory.getDao(BlockInfoDAO.class, getApplicationContext());
         List<BlockInfo> blockInfoList = blockInfoDAO.queryAll();
         if (CollectionUtils.isNotEmpty(blockInfoList)) {

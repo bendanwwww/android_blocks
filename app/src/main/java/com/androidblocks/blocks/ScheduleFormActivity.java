@@ -12,8 +12,10 @@ import com.androidblocks.utils.PaintUtils;
 import com.androidblocks.utils.TextUtils;
 import com.androidblocks.vo.BlockInfo;
 
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.os.Bundle;
@@ -64,6 +66,17 @@ public class ScheduleFormActivity extends AbstractActivity {
     @Override
     ActivityEnum ActivityTag() {
         return TAG;
+    }
+
+    public void onclick(View view) {
+        // 删除数据
+        GlobalVariable.delBlockInfoById(id);
+        // 更新画布
+        GlobalVariable.getView(ViewEnum.SEGMENTATION_ROUND).invalidate();
+        GlobalVariable.getView(ViewEnum.SCHEDULE_LINE).invalidate();
+        // 跳转至列表
+        Intent intent = new Intent(this,ScheduleListActivity.class);
+        startActivity(intent);
     }
 
     private void initEditText() {

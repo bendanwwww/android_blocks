@@ -1,8 +1,11 @@
 package com.androidblocks.blocks;
 
+import com.androidblocks.commom.GlobalVariable;
 import com.androidblocks.enums.ActivityEnum;
+import com.androidblocks.enums.ViewEnum;
 import com.androidblocks.view.ScheduleLineArc;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 /**
@@ -21,6 +24,15 @@ public class ScheduleListActivity extends AbstractActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_list);
         initView();
+    }
+
+    @Override
+    public void onBackPressed() {
+        // 更新画布
+        GlobalVariable.getView(ViewEnum.SEGMENTATION_ROUND).invalidate();
+        // 跳转至主页
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 
     @Override

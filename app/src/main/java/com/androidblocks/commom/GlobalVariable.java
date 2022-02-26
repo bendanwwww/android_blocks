@@ -107,6 +107,16 @@ public class GlobalVariable {
         return resList;
     }
 
+    public static void delBlockInfoById(String id) {
+        if (StringUtils.isEmpty(id)) {
+            return;
+        }
+        if (blockInfoMap.containsKey(id)) {
+            blockInfoMap.remove(id);
+        }
+        setBlockInfoUpdate(true);
+    }
+
     public static BlockInfo getBlockInfoById(String id) {
         return GlobalVariable.blockInfoMap.get(id);
     }
