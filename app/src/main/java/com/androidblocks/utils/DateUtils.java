@@ -40,9 +40,6 @@ public class DateUtils {
     public static final SimpleDateFormat HOUR_FORMAT = new SimpleDateFormat("HH:mm");
     public static final SimpleDateFormat DAY_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-
-
-
     /**
      * 获取当日已过秒数
      * @return
@@ -131,6 +128,25 @@ public class DateUtils {
         } catch (Exception e) {
             return FIRST_HOUR_DAY;
         }
+    }
+
+    /**
+     * 获取小时数
+     * @param hour HH:mm
+     * @return
+     */
+    public static String getHour(String hour) {
+        return hour.split(TIME_SPLIT)[0];
+    }
+
+    /**
+     * 获取分钟数
+     * @param hour HH:mm
+     * @return
+     */
+    public static String getMinute(String hour) {
+        String[] hourSplits = hour.split(TIME_SPLIT);
+        return hourSplits.length == 2 ? hourSplits[1] : "";
     }
 
     /**

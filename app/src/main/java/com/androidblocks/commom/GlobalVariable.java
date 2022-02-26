@@ -12,12 +12,15 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.androidblocks.blocks.R;
+import com.androidblocks.enums.ActivityEnum;
 import com.androidblocks.enums.ViewEnum;
 import com.androidblocks.utils.DateUtils;
 import com.androidblocks.utils.TextUtils;
 import com.androidblocks.vo.BlockInfo;
 
+import android.app.Activity;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * 全局参数
@@ -28,6 +31,8 @@ public class GlobalVariable {
 
     /** 画布集合 */
     private static volatile Map<ViewEnum, View> viewMap = new HashMap<>();
+    /** 页面集合 */
+    private static volatile Map<ActivityEnum, Activity> activityMap = new HashMap<>();
     /** 日程区间列表 */
     private static volatile Map<String, BlockInfo> blockInfoMap = new HashMap<>();
     /** 日程是否被更新 */
@@ -133,4 +138,11 @@ public class GlobalVariable {
         viewMap.put(key, view);
     }
 
+    public static Activity getActivity(ActivityEnum key) {
+        return activityMap.get(key);
+    }
+
+    public static void setActivityMap(ActivityEnum key, Activity activity) {
+        activityMap.put(key, activity);
+    }
 }

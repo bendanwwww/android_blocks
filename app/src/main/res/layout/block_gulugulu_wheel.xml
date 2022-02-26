@@ -9,18 +9,38 @@
               android:background="#FFFFFF"
 >
 
+    <com.androidblocks.view.HeadLineArc
+            android:id="@+id/head_line"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            tools:ignore="MissingConstraints"/>
+
+    <com.androidblocks.view.DaySlideArc
+            android:id="@+id/day_slide"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            tools:ignore="MissingConstraints"/>
+
     <com.androidblocks.view.SegmentationArc
             android:id="@+id/gulugulu"
             android:layout_width="550dp"
             android:layout_height="550dp"
             tools:ignore="MissingConstraints"/>
 
-    <Button
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:onClick="onclick"
-            android:text="日程设置"
-    />
+    <com.androidblocks.view.DayChangeLineArc
+            android:id="@+id/day_change"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="8dp"
+            tools:ignore="MissingConstraints"/>
+
+    <com.androidblocks.view.TabLineArc
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            tools:ignore="MissingConstraints"/>
 
 </LinearLayout>

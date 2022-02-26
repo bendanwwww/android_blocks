@@ -16,20 +16,28 @@ import androidx.annotation.Nullable;
  */
 public abstract class AbstractView extends View {
 
+    private Context mContext;
+
     public AbstractView(Context context) {
         super(context);
+        this.mContext = context;
     }
 
     public AbstractView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        this.mContext = context;
+        setArcAttributes(attrs);
     }
 
     public AbstractView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.mContext = context;
+        setArcAttributes(attrs);
     }
 
     public AbstractView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        this.mContext = context;
     }
 
     @Override
@@ -39,5 +47,7 @@ public abstract class AbstractView extends View {
         GlobalVariable.setView(viewTag(), this);
     }
 
-    abstract ViewEnum viewTag();
+    public abstract ViewEnum viewTag();
+
+    public abstract void setArcAttributes(AttributeSet attrs);
 }

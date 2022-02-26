@@ -6,8 +6,10 @@ import java.util.Random;
 
 import com.androidblocks.blocks.R;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.util.DisplayMetrics;
 
 public class PaintUtils {
 
@@ -41,6 +43,19 @@ public class PaintUtils {
 
     public static float getRoundDegree() {
         return ROUND_DEGREE;
+    }
+
+    /**
+     * 获取屏幕大小
+     * @param activity
+     * @return
+     */
+    public static int[] getWindowsSize(Activity activity) {
+        Resources resources = activity.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+        return new int[]{width, height};
     }
 
     /**

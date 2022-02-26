@@ -2,19 +2,20 @@ package com.androidblocks.blocks;
 
 import java.util.Objects;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.androidblocks.commom.GlobalVariable;
+import com.androidblocks.enums.ActivityEnum;
 import com.androidblocks.enums.ViewEnum;
 import com.androidblocks.utils.DateUtils;
 import com.androidblocks.utils.PaintUtils;
 import com.androidblocks.utils.TextUtils;
 import com.androidblocks.vo.BlockInfo;
 
-import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 /**
@@ -22,9 +23,15 @@ import android.os.Bundle;
  *
  * @author lsy
  */
-public class ScheduleFormActivity extends AppCompatActivity {
+public class ScheduleFormActivity extends AbstractActivity {
+
+    private static final ActivityEnum TAG = ActivityEnum.FORM_ACTIVITY;
 
     private LinearLayout mainLinerLayout;
+
+    private String id;
+
+    private volatile boolean isChange = false;
 
     private String time1;
     private String time2;
@@ -38,6 +45,10 @@ public class ScheduleFormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_form);
         mainLinerLayout = this.findViewById(R.id.scheduleForm);
+        // 初始化id
+        id = getIntent().getStringExtra("id");
+        // 初始化文本框
+        initEditText();
         // 监听各个文本框文字变化
         ((EditText) this.findViewById(R.id.time1)).addTextChangedListener(new EditTextListener((s) -> time1 = s));
         ((EditText) this.findViewById(R.id.time2)).addTextChangedListener(new EditTextListener((s) -> time2 = s));
@@ -50,12 +61,42 @@ public class ScheduleFormActivity extends AppCompatActivity {
         thread.start();
     }
 
+    @Override
+    ActivityEnum ActivityTag() {
+        return TAG;
+    }
+
+    private void initEditText() {
+        if (StringUtils.isEmpty(id)) {
+            return;
+        }
+        BlockInfo blockInfo = GlobalVariable.getBlockInfoById(id);
+        if (Objects.nonNull(blockInfo)) {
+            time1 = DateUtils.getHour(blockInfo.getStartHour());
+            time2 = DateUtils.getMinute(blockInfo.getStartHour());
+            time3 = DateUtils.getHour(blockInfo.getEndHour());
+            time4 = DateUtils.getMinute(blockInfo.getEndHour());
+            briefly = blockInfo.getText();
+            scheduleInfo = blockInfo.getInfo();
+            ((EditText) this.findViewById(R.id.time1)).setText(time1);
+            ((EditText) this.findViewById(R.id.time2)).setText(time2);
+            ((EditText) this.findViewById(R.id.time3)).setText(time3);
+            ((EditText) this.findViewById(R.id.time4)).setText(time4);
+            ((EditText) this.findViewById(R.id.briefly)).setText(briefly);
+            ((EditText) this.findViewById(R.id.scheduleInfo)).setText(scheduleInfo);
+        }
+    }
+
     class EditThread extends Thread {
         @Override
         public void run() {
             try {
                 while (true) {
+                    if (!isChange) {
+                        continue;
+                    }
                     save();
+                    isChange = false;
                     Thread.sleep(100);
                 }
             } catch (InterruptedException e) {
@@ -84,7 +125,6 @@ public class ScheduleFormActivity extends AppCompatActivity {
                 return;
             }
             // 存入blockInfo
-            String id = getIntent().getStringExtra("id");
             boolean needRefreshView = false;
             BlockInfo blockInfo = GlobalVariable.getBlockInfoById(id);
             if (Objects.isNull(blockInfo)) {
@@ -127,6 +167,7 @@ public class ScheduleFormActivity extends AppCompatActivity {
         @Override
         public void afterTextChanged(Editable s) {
             callBack.change(s.toString());
+            isChange = true;
         }
     }
 

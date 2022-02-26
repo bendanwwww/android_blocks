@@ -2,13 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.androidblocks.blocks">
 
+    <supports-screens
+            android:smallScreens="true"
+            android:normalScreens="true"
+            android:largeScreens="true"
+            android:resizeable="true"
+            android:anyDensity="true" />
+
     <application
             android:allowBackup="true"
             android:icon="@drawable/gulugulu"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/Theme.Blocks">
+            android:theme="@android:style/Theme.Light.NoTitleBar">
         <activity android:name=".ScheduleFormActivity">
         </activity>
         <activity android:name=".ScheduleListActivity">
