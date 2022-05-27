@@ -1,9 +1,17 @@
 package com.androidblocks.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.androidblocks.Listener.EditButtonListener;
+import com.androidblocks.Listener.TabButtonListener;
+import com.androidblocks.blocks.R;
 import com.androidblocks.enums.ViewEnum;
+import com.androidblocks.utils.BitmapUtil;
 import com.androidblocks.utils.TextUtils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -12,7 +20,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 
 /**
- * 白天/夜晚切换画布
+ * 头部图标
  *
  * @author lsy
  */
@@ -28,6 +36,8 @@ public class HeadLineArc extends AbstractView {
     private float rectTopGap;
     /** 气泡框占比 */
     private float textBoxProportions;
+    /** icon 间隔 */
+    private float iconGap;
 
     public HeadLineArc(Context context) {
         super(context);
@@ -50,24 +60,35 @@ public class HeadLineArc extends AbstractView {
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);
         paint.setColor(Color.BLACK);
+        // 点击坐标
+        List<float[]> buttonXs = new ArrayList<>();
+        List<float[]> buttonYs = new ArrayList<>();
+
         float textBoxWidth = getWidth() * textBoxProportions;
         float otherTab = getWidth() * (1f - textBoxProportions) / 2;
         // 绘制气泡框
-        canvas.drawRect(0, rectTopGap, textBoxWidth, getHeight() - rectTopGap, paint);
+//        canvas.drawRect(0, rectTopGap, textBoxWidth, getHeight() - rectTopGap, paint);
         // 绘制社群按钮
-        canvas.drawRect(textBoxWidth, rectTopGap, textBoxWidth + otherTab, getHeight() - rectTopGap, paint);
-        // 绘制分享按钮(
-        canvas.drawRect(textBoxWidth + otherTab, rectTopGap, getWidth(), getHeight() - rectTopGap, paint);
+        Bitmap share = BitmapUtil.getBitMapWithWidth(getResources(), R.drawable.share, otherTab - iconGap * 2);
+        canvas.drawBitmap(share, textBoxWidth + iconGap, (getHeight() - share.getHeight()) / 2, paint);
+//        canvas.drawRect(textBoxWidth, rectTopGap, textBoxWidth + otherTab, getHeight() - rectTopGap, paint);
+        // 绘制设置按钮
+        Bitmap setting = BitmapUtil.getBitMapWithWidth(getResources(), R.drawable.setting, otherTab - iconGap * 2);
+        canvas.drawBitmap(setting, textBoxWidth + otherTab + iconGap, (getHeight() - setting.getHeight()) / 2, paint);
+        buttonXs.add(new float[]{textBoxWidth + otherTab + iconGap, textBoxWidth + otherTab + iconGap + setting.getWidth()});
+        buttonYs.add(new float[]{(getHeight() - setting.getHeight()) / 2, (getHeight() - setting.getHeight()) / 2 + setting.getHeight()});
+//        canvas.drawRect(textBoxWidth + otherTab, rectTopGap, getWidth(), getHeight() - rectTopGap, paint);
         // 绘制文字
         Typeface lineFont = Typeface.createFromAsset(getContext().getAssets(), "fonts/schedule_line.ttf");
         float iconSize = 30f;
         textPaint.setTypeface(lineFont);
         textPaint.setColor(Color.BLACK);
         textPaint.setTextSize(iconSize);
-        canvas.drawText("气泡框组件", (textBoxWidth - iconSize * TextUtils.textLength("气泡框组件")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
-        canvas.drawText("社群图标", (2f * textBoxWidth + otherTab - iconSize * TextUtils.textLength("社群图标")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
-        canvas.drawText("分享图标", (textBoxWidth + otherTab + getWidth() - iconSize * TextUtils.textLength("分享图标")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
-
+//        canvas.drawText("气泡框组件", (textBoxWidth - iconSize * TextUtils.textLength("气泡框组件")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
+//        canvas.drawText("社群图标", (2f * textBoxWidth + otherTab - iconSize * TextUtils.textLength("社群图标")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
+//        canvas.drawText("分享图标", (textBoxWidth + otherTab + getWidth() - iconSize * TextUtils.textLength("分享图标")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
+        // 添加监听器
+        this.setOnTouchListener(new TabButtonListener(buttonXs, buttonYs));
     }
 
     @Override
@@ -97,4 +118,7 @@ public class HeadLineArc extends AbstractView {
         this.textBoxProportions = textBoxProportions;
     }
 
+    public void setIconGap(float iconGap) {
+        this.iconGap = iconGap;
+    }
 }

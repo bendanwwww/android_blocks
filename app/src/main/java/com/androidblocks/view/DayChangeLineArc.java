@@ -3,10 +3,13 @@ package com.androidblocks.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.androidblocks.blocks.R;
 import com.androidblocks.enums.ViewEnum;
+import com.androidblocks.utils.BitmapUtil;
 import com.androidblocks.utils.TextUtils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -56,15 +59,21 @@ public class DayChangeLineArc extends AbstractView {
         float rectWidth = getWidth() / 3f;
         float gap = (rectWidth - tabWidth) / 2f;
         // 第一个tab
-        canvas.drawRect(gap, rectTopGap, gap + tabWidth, getHeight() - rectTopGap, paint);
+        Bitmap leftArrow = BitmapUtil.getBitMapWithWidth(getResources(), R.drawable.arrow_left, tabWidth - 2 * gap - 2 * rectTopGap);
+        canvas.drawBitmap(leftArrow, rectTopGap, 0, paint);
+//        canvas.drawRect(gap, rectTopGap, gap + tabWidth, getHeight() - rectTopGap, paint);
         buttonXs.add(new float[]{gap, gap + tabWidth});
         buttonYs.add(new float[]{rectTopGap, getHeight() - rectTopGap});
         // 第二个tab
-        canvas.drawRect(rectWidth + gap, rectTopGap, rectWidth + gap + tabWidth, getHeight() - rectTopGap, paint);
+        Bitmap calendar = BitmapUtil.getBitMapWithWidth(getResources(), R.drawable.calendar, tabWidth - 2 * gap - 2 * rectTopGap);
+        canvas.drawBitmap(calendar, (getWidth() - calendar.getWidth()) / 2, 0, paint);
+//        canvas.drawRect(rectWidth + gap, rectTopGap, rectWidth + gap + tabWidth, getHeight() - rectTopGap, paint);
         buttonXs.add(new float[]{rectWidth + gap, rectWidth + gap + tabWidth});
         buttonYs.add(new float[]{rectTopGap, getHeight() - rectTopGap});
         // 第三个tab
-        canvas.drawRect(rectWidth * 2 + gap, rectTopGap, rectWidth * 2 + gap + tabWidth, getHeight() - rectTopGap, paint);
+        Bitmap rightArrow = BitmapUtil.getBitMapWithWidth(getResources(), R.drawable.arrow_right, tabWidth - 2 * gap - 2 * rectTopGap);
+        canvas.drawBitmap(rightArrow, getWidth() - rightArrow.getWidth() - rectTopGap, 0, paint);
+//        canvas.drawRect(rectWidth * 2 + gap, rectTopGap, rectWidth * 2 + gap + tabWidth, getHeight() - rectTopGap, paint);
         buttonXs.add(new float[]{rectWidth * 2 + gap, rectWidth * 2 + gap + tabWidth});
         buttonYs.add(new float[]{rectTopGap, getHeight() - rectTopGap});
         // 绘制文字
@@ -73,9 +82,9 @@ public class DayChangeLineArc extends AbstractView {
         textPaint.setTypeface(lineFont);
         textPaint.setColor(Color.BLACK);
         textPaint.setTextSize(iconSize);
-        canvas.drawText("前一天图标", (tabWidth + gap * 2 - iconSize * TextUtils.textLength("前一天图标")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
-        canvas.drawText("日期选择控件图标", (rectWidth * 2 + tabWidth + gap * 2 - iconSize * TextUtils.textLength("日期选择控件图标")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
-        canvas.drawText("后一天图标", (rectWidth * 4 + tabWidth + gap * 2 - iconSize * TextUtils.textLength("后一天图标")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
+//        canvas.drawText("前一天图标", (tabWidth + gap * 2 - iconSize * TextUtils.textLength("前一天图标")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
+//        canvas.drawText("日期选择控件图标", (rectWidth * 2 + tabWidth + gap * 2 - iconSize * TextUtils.textLength("日期选择控件图标")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
+//        canvas.drawText("后一天图标", (rectWidth * 4 + tabWidth + gap * 2 - iconSize * TextUtils.textLength("后一天图标")) / 2f, (getHeight() + iconSize) / 2f, textPaint);
     }
 
     @Override

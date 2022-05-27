@@ -13,12 +13,14 @@
             android:id="@+id/head_line"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
             tools:ignore="MissingConstraints"/>
 
     <com.androidblocks.view.DaySlideArc
             android:id="@+id/day_slide"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:layout_marginBottom="20dp"
             tools:ignore="MissingConstraints"/>
 
     <com.androidblocks.view.SegmentationArc
@@ -34,13 +36,14 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginTop="40dp"
             tools:ignore="MissingConstraints"/>
 
-    <com.androidblocks.view.TabLineArc
-            android:id="@+id/tab"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom"
-            tools:ignore="MissingConstraints"/>
+<!--    <com.androidblocks.view.TabLineArc-->
+<!--            android:id="@+id/tab"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            tools:ignore="MissingConstraints"/>-->
 
 </LinearLayout>

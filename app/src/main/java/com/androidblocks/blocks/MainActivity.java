@@ -33,7 +33,7 @@ public class MainActivity extends AbstractActivity {
 
     private static final ActivityEnum TAG = ActivityEnum.MAIN_ACTIVITY;
 
-    private static final float[] VIEW_PROPORTIONS = {0.12f, 0.1f, 0.6f, 0.08f, 0.1f};
+    private static final float[] VIEW_PROPORTIONS = {0.12f, 0.1f, 0.6f, 0.18f};
     private static final float ROUND_WIDTH_PROPORTIONS = 0.086f;
 
     private Handler handler;
@@ -102,8 +102,9 @@ public class MainActivity extends AbstractActivity {
         getApplicationContext();
         // 头部控件
         headLineArc = findViewById(R.id.head_line);
-        headLineArc.setTextBoxProportions(0.6f);
+        headLineArc.setTextBoxProportions(0.67f);
         headLineArc.setRectTopGap(PaintUtils.dip2px(10f));
+        headLineArc.setIconGap(PaintUtils.dip2px(16f));
         ViewGroup.LayoutParams headLineParams = headLineArc.getLayoutParams();
         // 白天/夜晚切换
         daySlideArc = findViewById(R.id.day_slide);
@@ -115,9 +116,9 @@ public class MainActivity extends AbstractActivity {
         dayChangeLineArc.setRectGap(PaintUtils.dip2px(30f));
         ViewGroup.LayoutParams dayChangeLineParams = dayChangeLineArc.getLayoutParams();
         // 下方tab
-        tabLineArc = findViewById(R.id.tab);
-        tabLineArc.setRectTopGap(PaintUtils.dip2px(10f));
-        ViewGroup.LayoutParams tabLineParams = tabLineArc.getLayoutParams();
+//        tabLineArc = findViewById(R.id.tab);
+//        tabLineArc.setRectTopGap(PaintUtils.dip2px(10f));
+//        ViewGroup.LayoutParams tabLineParams = tabLineArc.getLayoutParams();
         // 轮子
         segmentationArc = findViewById(R.id.gulugulu);
         ViewGroup.LayoutParams segmentationParams = segmentationArc.getLayoutParams();
@@ -128,7 +129,7 @@ public class MainActivity extends AbstractActivity {
         headLineParams.height = (int) (height * VIEW_PROPORTIONS[0]);
         daySlideParams.height = (int) (height * VIEW_PROPORTIONS[1]);
         dayChangeLineParams.height = (int) (height * VIEW_PROPORTIONS[3]);
-        tabLineParams.height = (int) (height * VIEW_PROPORTIONS[4]);
+//        tabLineParams.height = (int) (height * VIEW_PROPORTIONS[4]);
         int segmentationSize = (int) (height * VIEW_PROPORTIONS[2]) > width ? width : (int) (height * VIEW_PROPORTIONS[2]);
         segmentationParams.height = segmentationSize;
         segmentationParams.width = segmentationSize;
