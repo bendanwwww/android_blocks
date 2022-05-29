@@ -34,7 +34,7 @@ public class MainActivity extends AbstractActivity {
     private static final ActivityEnum TAG = ActivityEnum.MAIN_ACTIVITY;
 
     private static final float[] VIEW_PROPORTIONS = {0.12f, 0.1f, 0.6f, 0.18f};
-    private static final float ROUND_WIDTH_PROPORTIONS = 0.086f;
+    private static final float ROUND_WIDTH_PROPORTIONS = 0.065f;
 
     private Handler handler;
     private SegmentationArc segmentationArc;
@@ -134,7 +134,7 @@ public class MainActivity extends AbstractActivity {
         segmentationParams.height = segmentationSize;
         segmentationParams.width = segmentationSize;
         float roundWidth = segmentationSize * ROUND_WIDTH_PROPORTIONS;
-        segmentationArc.setRectGap(PaintUtils.dip2px(roundWidth / 2f + 20f));
+        segmentationArc.setRectGap(PaintUtils.dip2px(roundWidth / 2f + 44f));
         segmentationArc.setRoundWidth(PaintUtils.dip2px(roundWidth));
     }
 
